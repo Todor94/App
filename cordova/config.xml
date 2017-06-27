@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="App.rlab" version="0.1.0">
+  <name>RLab</name>
+  <description>
+    App for RLab
+  </description>
+  <author email="todor.delev94@gmail.com">
+    Todor Delev
+  </author>
+</widget>

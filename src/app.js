@@ -1,5 +1,5 @@
 const {
-  Button, Action, ImageView, TextView, TextInput, Picker, Page, ScrollView, AlertDialog, WebView, ui
+  Button, Action, TextView, TextInput, Picker, Page, ScrollView, AlertDialog, WebView, ui
 } = require('tabris');
 
 var mosPage;
@@ -15,13 +15,6 @@ var navigationView = new tabris.NavigationView({
 var mainPage = new tabris.Page({
   title: 'RLab'
 }).appendTo(navigationView);
-
-//Задаване на фон за началната страница
-var imageView = new tabris.ImageView({
-  left: 0, top: 0, right: 0, bottom: 0,
-  image: 'images/MainPage.jpg',
-  scaleMode: 'stretch'
-}).appendTo(mainPage);
 
 //Създване на Action за настройките
 new tabris.Action({
@@ -80,81 +73,124 @@ function createMosPage() {
    title: 'MOS транзистор'
  }).appendTo(navigationView);
 
- //Задаване на фон за страницата за MOS транзистор
- var imageViewMos = new tabris.ImageView({
-   left: 0, top: 0, right: 0, bottom: 0,
-   image: 'images/BackgroundsMOS.jpg',
-   scaleMode: 'stretch'
- }).appendTo(mosPage);
-
  //Създаване на TextView и TextInput за име
  new tabris.TextView({
-   id: 'nameLabelMos',
+   id: 'nameMosLabel',
    alignment: 'left',
    text: 'Име:'
  }).appendTo(mosPage);
 
  new tabris.TextInput({
-   id: 'nameInputMos',
+   id: 'nameMosInput',
    message: 'Трите имена на студента'
  }).appendTo(mosPage);
 
  //Създаване на TextView и TextInput за факултетен номер
  new tabris.TextView({
-   id: 'facultyNumberLabelMos',
+   id: 'facultyNumberMosLabel',
    text: 'Факултетен номер:'
  }).appendTo(mosPage);
 
  new tabris.TextInput({
-   id: 'facultyNumberInputMos',
+   id: 'facultyNumberMosInput',
    keyboard: 'number',
    message: 'Факултетен номер'
  }).appendTo(mosPage);
 
  //Създаване на TextView и TextInput за група
  new tabris.TextView({
-   id: 'groupLabelMos',
+   id: 'groupMosLabel',
    text: 'Група:'
  }).appendTo(mosPage);
 
  new tabris.TextInput({
-   id: 'groupNumberInputMos',
+   id: 'groupNumberMosInput',
    keyboard: 'number',
    message: 'Група'
  }).appendTo(mosPage);
 
  //Създаване на TextView и Picker за избор на MOS транзистор
  new tabris.TextView({
-   id: 'transistorLabelMos',
+   id: 'transistorMosLabel',
    text: 'Изберете транзистор:'
  }).appendTo(mosPage);
 
  new tabris.Picker({
-   id: 'transistorPickerMos',
+   id: 'transistorMosPicker',
    items: ['MOS 1', 'MOS 2', 'MOS 3', 'MOS 4']
  }).appendTo(mosPage);
 
- //Създаване на TextView и Picker за избор минималното напрежение на MOS транзистор
- new tabris.TextView({
-   id: 'voltageLabel',
-   text: 'Задайте минимална стойност на напрежението:'
- }).appendTo(mosPage);
+ //Създаване на входни данни за Uds
+  new tabris.TextView({
+    id: 'UdsLabel',
+    text: 'Uds, V'
+  }).appendTo(mosPage);
 
- new tabris.Picker({
-   id: 'voltagePicker',
-   items: ['50 mV', '100 mV', '150 mV', '200 mV']
- }).appendTo(mosPage);
+  //Създаване на TextView и TextInput за начална стойност за Uds
+  new tabris.TextView({
+    id: 'UdsStartValueLabel',
+    text: 'Начална стойност:'
+  }).appendTo(mosPage);
 
- //Създаване на TextView и Picker за избор на максималното напрецение на MOS транзистор
- new tabris.TextView({
-   id: 'voltageLabel2',
-   text: 'Задайте максимална стойност на напрежението:'
- }).appendTo(mosPage);
+  new tabris.TextInput({
+    id: 'UdsStartValueInput',
+    keyboard: 'number',
+    message: 'Въведете начална стойност за Uds'
+  }).appendTo(mosPage);
 
- new tabris.Picker({
-   id: 'voltagePicker2',
-   items: ['1 V', '2 V', '3 V', '4 V']
- }).appendTo(mosPage);
+  //Създаване на TextView и TextInput за крайна стойност за Uds
+  new tabris.TextView({
+    id: 'UdsEndValueLabel',
+    text: 'Крайна стойност:'
+  }).appendTo(mosPage);
+
+  new tabris.TextInput({
+    id: 'UdsEndValueInput',
+    keyboard: 'number',
+    message: 'Въведете крайна стойност за Uds'
+  }).appendTo(mosPage);
+
+  //Създаване на входни данни за Ugs
+   new tabris.TextView({
+     id: 'UgsLabel',
+     text: 'Ugs'
+   }).appendTo(mosPage);
+
+   //Създаване на TextView и TextInput за стойност 1
+   new tabris.TextView({
+     id: 'UgsValue1Label',
+     text: 'Стойност 1:'
+   }).appendTo(mosPage);
+
+   new tabris.TextInput({
+     id: 'UgsValue1Input',
+     keyboard: 'number',
+     message: 'Въведете стойност 1'
+   }).appendTo(mosPage);
+
+   //Създаване на TextView и TextInput за стойност 2
+   new tabris.TextView({
+     id: 'UgsValue2Label',
+     text: 'Стойност 2:'
+   }).appendTo(mosPage);
+
+   new tabris.TextInput({
+     id: 'UgsValue2Input',
+     keyboard: 'number',
+     message: 'Въведете стойност 2'
+   }).appendTo(mosPage);
+
+   //Създаване на TextView и TextInput за стойност 3
+   new tabris.TextView({
+     id: 'UgsValue3Label',
+     text: 'Стойност 3:'
+   }).appendTo(mosPage);
+
+   new tabris.TextInput({
+     id: 'UgsValue3Input',
+     keyboard: 'number',
+     message: 'Въведете стойност 3'
+   }).appendTo(mosPage);
 
  //Създаване на бутон за измерване на параметрите на MOS транзистор
  new tabris.Button({
@@ -197,19 +233,27 @@ function createMosPage() {
  }).appendTo(mosPage);
 
  mosPage.apply({
-   '#nameLabelMos': {left: 18, top: 18, width: 180},
-   '#nameInputMos': {left: '#nameLabelMos 10', right: 18, baseline: '#nameLabelMos'},
-   '#facultyNumberLabelMos': {left: 18, top: '#nameLabelMos 18', width: 180},
-   '#facultyNumberInputMos': {left: '#facultyNumberLabelMos 10', right: 18, baseline: '#facultyNumberLabelMos'},
-   '#groupLabelMos': {left: 18, top: '#facultyNumberLabelMos 18', width: 180},
-   '#groupNumberInputMos': {left: '#groupLabelMos 10', right: 18, baseline: '#groupLabelMos'},
-   '#transistorLabelMos': {left: 18, top: '#groupLabelMos 18', width: 180},
-   '#transistorPickerMos': {left: '#transistorLabelMos 10', right: 18, baseline: '#transistorLabelMos'},
-   '#voltageLabel': {left: 18, top: '#transistorLabelMos 18', width: 180},
-   '#voltagePicker': {left: '#voltageLabel 10', right: 18, baseline: '#voltageLabel'},
-   '#voltageLabel2': {left: 18, top: '#voltagePicker 18', width: 180},
-   '#voltagePicker2': {left: '#voltageLabel2 10', right: 18, baseline: '#voltageLabel2'},
-   '#measurmentMosButton': {left: 10, right: 10, top: '#voltagePicker2 18'}
+   '#nameMosLabel': {left: 18, top: 18, width: 180},
+   '#nameMosInput': {left: '#nameMosLabel 10', right: 18, baseline: '#nameMosLabel'},
+   '#facultyNumberMosLabel': {left: 18, top: '#nameMosLabel 18', width: 180},
+   '#facultyNumberMosInput': {left: '#facultyNumberMosLabel 10', right: 18, baseline: '#facultyNumberMosLabel'},
+   '#groupMosLabel': {left: 18, top: '#facultyNumberMosLabel 18', width: 180},
+   '#groupNumberMosInput': {left: '#groupMosLabel 10', right: 18, baseline: '#groupMosLabel'},
+   '#transistorMosLabel': {left: 18, top: '#groupMosLabel 18', width: 180},
+   '#transistorMosPicker': {left: '#transistorMosLabel 10', right: 18, baseline: '#transistorMosLabel'},
+   '#UdsLabel': {left: 18, top: '#transistorMosLabel 18', width: 180},
+   '#UdsStartValueLabel': {left: 18, top: '#UdsLabel 18', width: 180},
+   '#UdsStartValueInput': {left: '#UdsStartValueLabel 10', right: 18, baseline: '#UdsStartValueLabel'},
+   '#UdsEndValueLabel': {left: 18, top: '#UdsStartValueLabel 18', width: 180},
+   '#UdsEndValueInput': {left: '#UdsEndValueLabel 10', right: 18, baseline: '#UdsEndValueLabel'},
+   '#UgsLabel': {left: 18, top: '#UdsEndValueLabel 18', width: 180},
+   '#UgsValue1Label': {left: 18, top: '#UgsLabel 18', width: 180},
+   '#UgsValue1Input': {left: '#UgsValue1Label 10', right: 18, baseline: '#UgsValue1Label'},
+   '#UgsValue2Label': {left: 18, top: '#UgsValue1Label 18', width: 180},
+   '#UgsValue2Input': {left: '#UgsValue2Label 10', right: 18, baseline: '#UgsValue2Label'},
+   '#UgsValue3Label': {left: 18, top: '#UgsValue2Label 18', width: 180},
+   '#UgsValue3Input': {left: '#UgsValue3Label 10', right: 18, baseline: '#UgsValue3Label'},
+   '#measurmentMosButton': {left: 10, right: 10, top: '#UgsValue3Label 18'}
  });
 
  return mosPage;
@@ -223,81 +267,123 @@ function createBjtPage() {
    title: 'Биполярен транзистор'
  }).appendTo(navigationView);
 
- //Задаване на фон за страницата за биполярен транзистор
- var imageViewBjt = new tabris.ImageView({
-   left: 0, top: 0, right: 0, bottom: 0,
-   image: 'images/BackgroundsBJT.gif',
-   scaleMode: 'fit'
- }).appendTo(bjtPage);
-
  //Създаване на TextView и TextInput за име
  new tabris.TextView({
-   id: 'nameLabelBjt',
+   id: 'nameBjtLabel',
    alignment: 'left',
    text: 'Име:'
  }).appendTo(bjtPage);
 
  new tabris.TextInput({
-   id: 'nameInputBjt',
+   id: 'nameBjtInput',
    message: 'Трите имена на студента'
  }).appendTo(bjtPage);
 
  //Създаване на TextView и TextInput за факултетен номер
  new tabris.TextView({
-   id: 'facultyNumberLabelBjt',
+   id: 'facultyNumberBjtLabel',
    text: 'Факултетен номер:'
  }).appendTo(bjtPage);
 
  new tabris.TextInput({
-   id: 'facultyNumberInputBjt',
+   id: 'facultyNumberBjtInput',
    keyboard: 'number',
    message: 'Факултетен номер'
  }).appendTo(bjtPage);
 
  //Създаване на TextView и TextInput за група
  new tabris.TextView({
-   id: 'groupLabelBjt',
+   id: 'groupBjtLabel',
    text: 'Група:'
  }).appendTo(bjtPage);
 
  new tabris.TextInput({
-   id: 'groupNumberInputBjt',
+   id: 'groupNumberBjtInput',
    keyboard: 'number',
    message: 'Група'
  }).appendTo(bjtPage);
 
  //Създаване на TextView и Picker за избор на биполярен транзистор
  new tabris.TextView({
-   id: 'transistorLabelBjt',
+   id: 'transistorBjtLabel',
    text: 'Изберете транзистор:'
  }).appendTo(bjtPage);
 
  new tabris.Picker({
-   id: 'transistorPickerBjt',
+   id: 'transistorBjtPicker',
    items: ['BJT 1', 'BJT 2', 'BJT 3', 'BJT 4']
  }).appendTo(bjtPage);
 
- //Създаване на TextView и Picker за избор минималния ток на биполярен транзистор
  new tabris.TextView({
-   id: 'currentLabel',
-   text: 'Задайте минимална стойност на тока:'
+   id: 'UceLabel',
+   text: 'Uce, V (0-12)'
  }).appendTo(bjtPage);
 
- new tabris.Picker({
-   id: 'currentPicker',
-   items: ['50 mA', '100 mA', '150 mA', '200 mA']
- }).appendTo(bjtPage);
-
- //Създаване на TextView и Picker за избор максималния ток на биполярен транзистор
+ //Създаване на TextView и TextInput за начална стойност за Uce
  new tabris.TextView({
-   id: 'currentLabel2',
-   text: 'Задайте максимална стойност на тока:'
+   id: 'UceStartValueLabel',
+   text: 'Начална стойност:'
  }).appendTo(bjtPage);
 
- new tabris.Picker({
-   id: 'currentPicker2',
-   items: ['300 mA', '500 mA', '750 mA', '1 A']
+ new tabris.TextInput({
+   id: 'UceStartValueInput',
+   keyboard: 'number',
+   message: 'Въведете начална стойност за Uce'
  }).appendTo(bjtPage);
+
+ //Създаване на TextView и TextInput за крайна стойност за Uce
+ new tabris.TextView({
+   id: 'UceEndValueLabel',
+   text: 'Крайна стойност:'
+ }).appendTo(bjtPage);
+
+ new tabris.TextInput({
+   id: 'UceEndValueInput',
+   keyboard: 'number',
+   message: 'Въведете крайна стойност за Uce'
+ }).appendTo(bjtPage);
+
+ //Създаване на входни данни за Ib
+  new tabris.TextView({
+    id: 'IbLabel',
+    text: 'Ib, uA'
+  }).appendTo(bjtPage);
+
+  //Създаване на TextView и TextInput за стойност 1
+  new tabris.TextView({
+    id: 'IbValue1Label',
+    text: 'Стойност 1:'
+  }).appendTo(bjtPage);
+
+  new tabris.TextInput({
+    id: 'IbValue1Input',
+    keyboard: 'number',
+    message: 'Въведете стойност 1'
+  }).appendTo(bjtPage);
+
+  //Създаване на TextView и TextInput за стойност 2
+  new tabris.TextView({
+    id: 'IbValue2Label',
+    text: 'Стойност 2:'
+  }).appendTo(bjtPage);
+
+  new tabris.TextInput({
+    id: 'IbValue2Input',
+    keyboard: 'number',
+    message: 'Въведете стойност 2'
+  }).appendTo(bjtPage);
+
+  //Създаване на TextView и TextInput за стойност 3
+  new tabris.TextView({
+    id: 'IbValue3Label',
+    text: 'Стойност 3:'
+  }).appendTo(bjtPage);
+
+  new tabris.TextInput({
+    id: 'IbValue3Input',
+    keyboard: 'number',
+    message: 'Въведете стойност 3'
+  }).appendTo(bjtPage);
 
  //Създаване на бутон за измерване на параметрите на биполярен транзистор
  new tabris.Button({
@@ -340,19 +426,27 @@ function createBjtPage() {
  }).appendTo(bjtPage);
 
  bjtPage.apply({
-   '#nameLabelBjt': {left: 18, top: 18, width: 180},
-   '#nameInputBjt': {left: '#nameLabelBjt 10', right: 18, baseline: '#nameLabelBjt'},
-   '#facultyNumberLabelBjt': {left: 18, top: '#nameLabelBjt 18', width: 180},
-   '#facultyNumberInputBjt': {left: '#facultyNumberLabelBjt 10', right: 18, baseline: '#facultyNumberLabelBjt'},
-   '#groupLabelBjt': {left: 18, top: '#facultyNumberLabelBjt 18', width: 180},
-   '#groupNumberInputBjt': {left: '#groupLabelBjt 10', right: 18, baseline: '#groupLabelBjt'},
-   '#transistorLabelBjt': {left: 18, top: '#groupLabelBjt 18', width: 180},
-   '#transistorPickerBjt': {left: '#transistorLabelBjt 10', right: 18, baseline: '#transistorLabelBjt'},
-   '#currentLabel': {left: 18, top: '#transistorLabelBjt 18', width: 180},
-   '#currentPicker': {left: '#currentLabel 10', right: 18, baseline: '#currentLabel'},
-   '#currentLabel2': {left: 18, top: '#currentPicker 18', width: 180},
-   '#currentPicker2': {left: '#currentLabel2 10', right: 18, baseline: '#currentLabel2'},
-   '#measurmentBjtButton': {left: 10, right: 10, top: '#currentPicker2 18'}
+   '#nameBjtLabel': {left: 18, top: 18, width: 180},
+   '#nameBjtInput': {left: '#nameBjtLabel 10', right: 18, baseline: '#nameBjtLabel'},
+   '#facultyNumberBjtLabel': {left: 18, top: '#nameBjtLabel 18', width: 180},
+   '#facultyNumberBjtInput': {left: '#facultyNumberBjtLabel 10', right: 18, baseline: '#facultyNumberBjtLabel'},
+   '#groupBjtLabel': {left: 18, top: '#facultyNumberBjtLabel 18', width: 180},
+   '#groupNumberBjtInput': {left: '#groupBjtLabel 10', right: 18, baseline: '#groupBjtLabel'},
+   '#transistorBjtLabel': {left: 18, top: '#groupBjtLabel 18', width: 180},
+   '#transistorBjtPicker': {left: '#transistorBjtLabel 10', right: 18, baseline: '#transistorBjtLabel'},
+   '#UceLabel': {left: 18, top: '#transistorBjtLabel 18', width: 180},
+   '#UceStartValueLabel': {left: 18, top: '#UceLabel 18', width: 180},
+   '#UceStartValueInput': {left: '#UceStartValueLabel 10', right: 18, baseline: '#UceStartValueLabel'},
+   '#UceEndValueLabel': {left: 18, top: '#UceStartValueLabel 18', width: 180},
+   '#UceEndValueInput': {left: '#UceEndValueLabel 10', right: 18, baseline: '#UceEndValueLabel'},
+   '#IbLabel': {left: 18, top: '#UceEndValueLabel 18', width: 180},
+   '#IbValue1Label': {left: 18, top: '#IbLabel 18', width: 180},
+   '#IbValue1Input': {left: '#IbValue1Label 10', right: 18, baseline: '#IbValue1Label'},
+   '#IbValue2Label': {left: 18, top: '#IbValue1Label 18', width: 180},
+   '#IbValue2Input': {left: '#IbValue2Label 10', right: 18, baseline: '#IbValue2Label'},
+   '#IbValue3Label': {left: 18, top: '#IbValue2Label 18', width: 180},
+   '#IbValue3Input': {left: '#IbValue3Label 10', right: 18, baseline: '#IbValue3Label'},
+   '#measurmentBjtButton': {left: 10, right: 10, top: '#IbValue3Label 18'/*'#currentPicker2 18'*/}
  });
 
  return bjtPage;
@@ -361,9 +455,11 @@ function createBjtPage() {
 //Функция за визуализиране на информзацията за студента и резултатитите от измерването за MOS транзистор
 function updateMessageMos() {
 
+  var transistorMos = mosPage.children('#transistorMosPicker').first().selection;
+
   mosMessage.text = [
     'Студент: ' + createStudentMos(),
-    'Транзистор: ' + createTransistorMos(),
+    'Транзистор: ' + transistorMos,
     'Резултати от измерването: '
   ].join('\n') + '\n';
 
@@ -372,31 +468,22 @@ function updateMessageMos() {
 //Фунцкия, която връща информацията за студента въведена в страницата за MOS транзистор
 function createStudentMos() {
 
-  var studentMos = mosPage.children('#nameInputMos').first().text;
-  var facultyNumberMos = mosPage.children('#facultyNumberInputMos').first().text;
-  var groupMos = mosPage.children('#groupNumberInputMos').first().text;
+  var studentMos = mosPage.children('#nameMosInput').first().text;
+  var facultyNumberMos = mosPage.children('#facultyNumberMosInput').first().text;
+  var groupMos = mosPage.children('#groupNumberMosInput').first().text;
   var infoMos = studentMos + ', Факултетен номер: ' + facultyNumberMos + ', Група: ' + groupMos;
   return infoMos;
-
-}
-
-//Функция, която връща информацията за MOS транзистора
-function createTransistorMos() {
-
-  var transistorMos = mosPage.children('#transistorPickerMos').first().selection;
-  var voltage = mosPage.children('#voltagePicker').first().selection;
-  var voltage2 = mosPage.children('#voltagePicker2').first().selection;
-  var transistorInfoMos = transistorMos + ', с минимално напрежение: ' + voltage + ' и максимално напрежение: ' + voltage2;
-  return transistorInfoMos;
 
 }
 
 //Функция за визуализиране на информзацията за студента и резултатитите от измерването за биполярния транзистор
 function updateMessageBjt() {
 
+  var transistorBjt = bjtPage.children('#transistorBjtPicker').first().selection;
+
   bjtMessage.text = [
     'Студент: ' + createStudentBjt(),
-    'Транзистор: ' + createTransistorBjt(),
+    'Транзистор: ' + transistorBjt,
     'Резултати от измерването: '
   ].join('\n') + '\n';
 
@@ -405,22 +492,11 @@ function updateMessageBjt() {
 //Фунцкия, която връща информацията за студента въведена в страницата за биполярния транзистор
 function createStudentBjt() {
 
-  var studentBjt = bjtPage.children('#nameInputBjt').first().text;
-  var facultyNumberBjt = bjtPage.children('#facultyNumberInputBjt').first().text;
-  var groupBjt = bjtPage.children('#groupNumberInputBjt').first().text;
+  var studentBjt = bjtPage.children('#nameBjtInput').first().text;
+  var facultyNumberBjt = bjtPage.children('#facultyNumberBjtInput').first().text;
+  var groupBjt = bjtPage.children('#groupNumberBjtInput').first().text;
   var infoBjt = studentBjt + ', Факултетен номер: ' + facultyNumberBjt + ', Група: ' + groupBjt;
   return infoBjt;
-
-}
-
-//Функция, която връща информацията за биполярния транзистора
-function createTransistorBjt() {
-
-  var transistorBjt = bjtPage.children('#transistorPickerBjt').first().selection;
-  var current = bjtPage.children('#currentPicker').first().selection;
-  var current2 = bjtPage.children('#currentPicker2').first().selection;
-  var transistorInfoBjt = transistorBjt + ', с минимален ток: ' + current + ' и максимален ток: ' + current2;
-  return transistorInfoBjt;
 
 }
 
@@ -432,13 +508,6 @@ function createSettingsPage() {
     title: 'Settings'
   }).on('appear', () => actionVisbility(false))
     .on('disappear', () => actionVisbility(true));
-
-  //Задаване на фон за страницата за Settings
-  var imageViewSettings = new tabris.ImageView({
-    left: 0, top: 0, right: 0, bottom: 0,
-    image: 'images/Settings.jpg',
-    scaleMode: 'fit'
-  }).appendTo(settingsPage);
 
   //Създаване на бутон за разработчика на приложението
   new tabris.Button({

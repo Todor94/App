@@ -2,39 +2,8 @@ const {
   Button, Action, TextView, TextInput, Picker, Page, ScrollView, AlertDialog, WebView, ui
 } = require('tabris');
 
-const MOS = [
-  {
-    id: 'MOS1',
-    name: 'MOS1'
-  },
-  {
-    id: 'MOS2',
-    name: 'MOS2'
-  },
-  {
-    id: 'MOS3',
-    name: 'MOS3'
-  },
-  {
-    id: 'MOS4',
-    name: 'MOS4'
-  }
-];
-
-const BJT = [
-  {
-    id: 'BJT1',
-    name: 'BJT1'
-  },
-  {
-    id: 'BJT2',
-    name: 'BJT2'
-  },
-  {
-    id: 'BJT3',
-    name: 'BJT3'
-  }
-];
+const MOS = ['MOS1', 'MOS2', 'MOS3', 'MOS4'];
+const BJT = ['BJT1', 'BJT2', 'BJT3'];
 
 var mosPage;
 var mosMessage;
@@ -152,7 +121,7 @@ function createMosPage() {
  new tabris.Picker({
    id: 'transistorMosPicker',
    itemCount: MOS.length,
-   itemText: (index) => MOS[index].name,
+   itemText: (index) => MOS[index],
    selectionIndex: 0
  }).appendTo(mosPage);
 
@@ -348,7 +317,7 @@ function createBjtPage() {
  new tabris.Picker({
    id: 'transistorBjtPicker',
    itemCount: BJT.length,
-   itemText: (index) => BJT[index].name,
+   itemText: (index) => BJT[index],
    selectionIndex: 0
  }).appendTo(bjtPage);
 
@@ -493,11 +462,9 @@ function createBjtPage() {
 //Функция за визуализиране на информзацията за студента и резултатитите от измерването за MOS транзистор
 function updateMessageMos() {
 
-  var transistorMos = mosPage.children('#transistorMosPicker').first().selection;
-
   mosMessage.text = [
     'Студент: ' + createStudentMos(),
-    'Транзистор: ' + transistorMos,
+    'Транзистор: ' + MOS[mosPage.children('#transistorMosPicker').first().selectionIndex],
     'Резултати от измерването: '
   ].join('\n') + '\n';
 
@@ -517,11 +484,9 @@ function createStudentMos() {
 //Функция за визуализиране на информзацията за студента и резултатитите от измерването за биполярния транзистор
 function updateMessageBjt() {
 
-  var transistorBjt = bjtPage.children('#transistorBjtPicker').first().selection;
-
   bjtMessage.text = [
     'Студент: ' + createStudentBjt(),
-    'Транзистор: ' + transistorBjt,
+    'Транзистор: ' + BJT[bjtPage.children('#transistorBjtPicker').first().selectionIndex],
     'Резултати от измерването: '
   ].join('\n') + '\n';
 
@@ -614,4 +579,4 @@ function createAuthorPage() {
  }).appendTo(authorPage);
 
  return authorPage;
-}     
+}

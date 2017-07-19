@@ -2,6 +2,40 @@ const {
   Button, Action, TextView, TextInput, Picker, Page, ScrollView, AlertDialog, WebView, ui
 } = require('tabris');
 
+const MOS = [
+  {
+    id: 'MOS1',
+    name: 'MOS1'
+  },
+  {
+    id: 'MOS2',
+    name: 'MOS2'
+  },
+  {
+    id: 'MOS3',
+    name: 'MOS3'
+  },
+  {
+    id: 'MOS4',
+    name: 'MOS4'
+  }
+];
+
+const BJT = [
+  {
+    id: 'BJT1',
+    name: 'BJT1'
+  },
+  {
+    id: 'BJT2',
+    name: 'BJT2'
+  },
+  {
+    id: 'BJT3',
+    name: 'BJT3'
+  }
+];
+
 var mosPage;
 var mosMessage;
 var bjtPage;
@@ -117,7 +151,9 @@ function createMosPage() {
 
  new tabris.Picker({
    id: 'transistorMosPicker',
-   items: ['MOS 1', 'MOS 2', 'MOS 3', 'MOS 4']
+   itemCount: MOS.length,
+   itemText: (index) => MOS[index].name,
+   selectionIndex: 0
  }).appendTo(mosPage);
 
  //Създаване на входни данни за Uds
@@ -311,7 +347,9 @@ function createBjtPage() {
 
  new tabris.Picker({
    id: 'transistorBjtPicker',
-   items: ['BJT 1', 'BJT 2', 'BJT 3', 'BJT 4']
+   itemCount: BJT.length,
+   itemText: (index) => BJT[index].name,
+   selectionIndex: 0
  }).appendTo(bjtPage);
 
  new tabris.TextView({
@@ -576,4 +614,4 @@ function createAuthorPage() {
  }).appendTo(authorPage);
 
  return authorPage;
-}
+}     
